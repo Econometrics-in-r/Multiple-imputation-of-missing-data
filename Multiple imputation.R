@@ -121,7 +121,7 @@ BVAR <- rowSums(SQ)/(M-1)
 #Total variance
 TVAR <- WVAR + BVAR + BVAR/M
 # Table of results
-results = data.frame(PEstimates=PEST, WSD=sqrt(WVAR), BSD=sqrt(BVAR), TSD=sqrt(TVAR) , Likelihood= LLIK)
+results = data.frame(PEstimates=PEST, WSD=sqrt(WVAR), BSD=sqrt(BVAR), TSD=sqrt(TVAR))
 
 results
 
