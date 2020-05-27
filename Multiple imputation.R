@@ -21,10 +21,6 @@ Mindex = which(MVar %in% NA)
 
 #placeholders
 matimpvar = matrix(NA,nrow = N, ncol = M)
-EST = matrix(NA,nrow = NROW(init), ncol = M)
-SQR = matrix(NA,nrow = NROW(init), ncol = M)
-SQ = matrix(NA,nrow = NROW(init), ncol = M)
-Lik = rep.int(NA,M)
 
 # Halton Draws 
 preparedraws=function()
@@ -80,6 +76,13 @@ Axis(side=2,at = seq(0,1,by=0.05))
 legend(4.5,0.40, c("Density of observed variable","Density of imputed variable"),
        lty=c(1,3), lwd=c(3,3),col = c("gray","black"),bty="n",y.intersp=3)
 
+# initial values #
+init <- c(2,0.1,0.1)
+#placeholders
+EST = matrix(NA,nrow = NROW(init), ncol = M)
+SQR = matrix(NA,nrow = NROW(init), ncol = M)
+SQ = matrix(NA,nrow = NROW(init), ncol = M)
+
 # multiple imputation
 for (m in 1:M) {
 
@@ -99,9 +102,6 @@ LL <- function(params){## Log Likelihood Function
     
   return(loglik)
   }
-  
-  # initial values #
-  init <- c(2,0.1,0.1)
 
   fit1 <- maxLik(LL,start=init,method="BFGS")
   
